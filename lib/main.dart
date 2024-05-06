@@ -22,7 +22,7 @@ class BookshelfApps extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           scaffoldBackgroundColor: const Color.fromARGB(255, 240, 240, 240)),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }

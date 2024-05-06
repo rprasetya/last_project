@@ -9,7 +9,7 @@ class TesPage extends StatefulWidget {
 }
 
 class _TesPageState extends State<TesPage> {
-  final _future = Supabase.instance.client.from('countries').select();
+  final _future = Supabase.instance.client.from('books').select();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class _TesPageState extends State<TesPage> {
             itemBuilder: ((context, index) {
               final country = countries[index];
               return ListTile(
-                title: Text(country['name']),
+                title: Text(country['title']),
               );
             }),
           );
