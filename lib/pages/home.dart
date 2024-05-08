@@ -114,7 +114,7 @@ class HomePage extends StatelessWidget {
                                         context: context,
                                         builder: (BuildContext context) {
                                           return SizedBox(
-                                            height: 400,
+                                            height: 360,
                                             child: Center(
                                               child: Column(
                                                 children: [
