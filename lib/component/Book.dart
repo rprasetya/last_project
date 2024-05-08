@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:intl/intl.dart';
-
-final allBooks = Supabase.instance.client.from('books').select();
 
 class Book extends StatelessWidget {
   String title;
