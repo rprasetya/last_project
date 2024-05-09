@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:last_project/component/Book.dart';
+import 'package:last_project/component/RemoveBookButton.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class HomePage extends StatelessWidget {
@@ -24,19 +25,46 @@ class HomePage extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        drawer: Drawer(
-          child: ListView(
-            children: const [
-              DrawerHeader(
-                decoration:
-                    BoxDecoration(color: Color.fromARGB(255, 16, 16, 16)),
-                child: Text(
-                  'Bookshelf Apps',
-                  style: TextStyle(
-                      color: Colors.white, fontFamily: 'Benzin-Medium'),
-                ),
+        drawer: SafeArea(
+          child: Drawer(
+            child: Container(
+              decoration:
+                  const BoxDecoration(color: Color.fromARGB(255, 30, 30, 30)),
+              child: ListView(
+                children: const [
+                  DrawerHeader(
+                    decoration:
+                        BoxDecoration(color: Color.fromARGB(255, 16, 16, 16)),
+                    child: Text(
+                      'Bookshelf Apps',
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: 'Benzin-Medium'),
+                    ),
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Coming Soon',
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: 'Benzin-Bold'),
+                    ),
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Coming Soon',
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: 'Benzin-Bold'),
+                    ),
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Coming Soon',
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: 'Benzin-Bold'),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
         body: CustomScrollView(slivers: [
@@ -56,7 +84,7 @@ class HomePage extends StatelessWidget {
               },
             ),
             title: const Text(
-              'Raul Paoli',
+              'Bookshelf Apps',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 14,
@@ -85,7 +113,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(
-                            right: 22, left: 22, top: 63, bottom: 20),
+                            right: 18, left: 18, top: 85, bottom: 15),
                         child: Row(
                           children: [
                             Expanded(
@@ -114,7 +142,7 @@ class HomePage extends StatelessWidget {
                                         context: context,
                                         builder: (BuildContext context) {
                                           return SizedBox(
-                                            height: 360,
+                                            height: 400,
                                             child: Center(
                                               child: Column(
                                                 children: [
@@ -363,15 +391,22 @@ class HomePage extends StatelessWidget {
                                                                                     showDialog(
                                                                                         context: context,
                                                                                         builder: (BuildContext context) {
-                                                                                          return const CupertinoAlertDialog(
-                                                                                            title: Text('Success'),
-                                                                                            content: Text('The book has been added!'),
+                                                                                          return CupertinoAlertDialog(
+                                                                                            title: const Text('Success'),
+                                                                                            content: const Text('The book has been added!'),
                                                                                             actions: [
                                                                                               CupertinoDialogAction(
-                                                                                                  child: Text(
-                                                                                                'Close',
-                                                                                                style: TextStyle(color: Colors.black),
-                                                                                              ))
+                                                                                                  child: TextButton(
+                                                                                                      onPressed: () {
+                                                                                                        Navigator.of(context).pop();
+                                                                                                        Navigator.of(context).pop();
+                                                                                                        Navigator.of(context).pop();
+                                                                                                        DefaultTabController.of(context).animateTo(1);
+                                                                                                      },
+                                                                                                      child: const Text(
+                                                                                                        'Close',
+                                                                                                        style: TextStyle(color: Colors.black),
+                                                                                                      )))
                                                                                             ],
                                                                                           );
                                                                                         });
@@ -458,46 +493,10 @@ class HomePage extends StatelessWidget {
                                     ),
                                   )),
                             ),
-                            const SizedBox(
-                              width: 17,
-                            ),
-                            Expanded(
-                              child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    shadowColor: MaterialStateProperty.all<
-                                            Color>(
-                                        const Color.fromARGB(0, 255, 255, 255)),
-                                    shape: MaterialStateProperty.all<
-                                            RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(18),
-                                    )),
-                                    minimumSize: const MaterialStatePropertyAll(
-                                        Size.fromHeight(170)),
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            const Color.fromARGB(
-                                                255, 230, 230, 230)),
-                                    foregroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Colors.black),
-                                  ),
-                                  onPressed: () {},
-                                  child: const SizedBox(
-                                    height: 120,
-                                    width: double.infinity,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text('+'),
-                                        Text('Add New Book'),
-                                      ],
-                                    ),
-                                  )),
-                            ),
+                            // const SizedBox(
+                            //   width: 17,
+                            // ),
+                            // RemoveBookButton(),
                           ],
                         ),
                       ),
@@ -520,7 +519,7 @@ class HomePage extends StatelessWidget {
                                       width: 18,
                                     ),
                                     Text(
-                                      '27',
+                                      '',
                                       style: TextStyle(
                                           fontFamily: 'Benzin-Bold',
                                           fontSize: 14,

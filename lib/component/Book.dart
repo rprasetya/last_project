@@ -20,9 +20,9 @@ class Book extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 10),
         Container(
-          margin: const EdgeInsets.symmetric(horizontal: 13),
+          margin: const EdgeInsets.only(right: 20, left: 20, bottom: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(15)),
             color: Color.fromARGB(255, 225, 225, 225),
@@ -34,11 +34,12 @@ class Book extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const CircleAvatar(
-                      radius: 25,
-                      foregroundColor: Colors.black,
-                      backgroundColor: Color.fromARGB(255, 210, 210, 210),
-                      child: Icon(
+                    Container(
+                      decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 207, 207, 207),
+                          borderRadius: BorderRadius.circular(50)),
+                      padding: const EdgeInsets.all(7),
+                      child: const Icon(
                         Icons.book,
                         size: 30,
                       ),
@@ -56,14 +57,9 @@ class Book extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: 200,
-                      child: Flexible(
-                        child: Text(
-                          title,
-                          style: const TextStyle(fontFamily: 'Benzin-Bold'),
-                        ),
-                      ),
+                    Text(
+                      title,
+                      style: const TextStyle(fontFamily: 'Benzin-Bold'),
                     ),
                   ],
                 ),
@@ -80,15 +76,12 @@ class Book extends StatelessWidget {
                           letterSpacing: -.4,
                           color: Color.fromARGB(255, 130, 130, 130)),
                     ),
-                    SizedBox(
-                      width: 80,
-                      child: Text(
-                        'Status',
-                        style: TextStyle(
-                            fontSize: 11.5,
-                            letterSpacing: -.4,
-                            color: Color.fromARGB(255, 130, 130, 130)),
-                      ),
+                    Text(
+                      'Status',
+                      style: TextStyle(
+                          fontSize: 11.5,
+                          letterSpacing: -.4,
+                          color: Color.fromARGB(255, 130, 130, 130)),
                     ),
                   ],
                 ),
@@ -105,16 +98,13 @@ class Book extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 55, 55, 55)),
                     ),
-                    SizedBox(
-                      width: 80,
-                      child: Text(
-                        isFinished ? 'Finished' : 'Unfinished',
-                        style: const TextStyle(
-                            fontSize: 11.5,
-                            letterSpacing: -.1,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 55, 55, 55)),
-                      ),
+                    Text(
+                      isFinished ? 'Finished' : 'Unfinished',
+                      style: const TextStyle(
+                          fontSize: 11.5,
+                          letterSpacing: -.1,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 55, 55, 55)),
                     ),
                   ],
                 ),
