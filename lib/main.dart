@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:last_project/pages/home.dart';
+import 'package:last_project/pages/HomePage.dart';
+import 'package:last_project/pages/LoginPage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
@@ -22,7 +23,10 @@ class BookshelfApps extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           scaffoldBackgroundColor: const Color.fromARGB(255, 240, 240, 240)),
-      home: HomePage(),
+      routes: {
+        '/': (context) => const LoginPage(),
+        '/home': (context) => HomePage()
+      },
     );
   }
 }
