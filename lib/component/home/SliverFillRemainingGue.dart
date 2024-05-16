@@ -4,11 +4,14 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SliverFillRemainingGue extends StatelessWidget {
   SliverFillRemainingGue({super.key});
+
   final _allBooks = Supabase.instance.client.from('books').select();
   final _unfinishedBooks =
-      Supabase.instance.client.from('books').select().neq('isFinished', true);
+      Supabase.instance.client.from('books').select().eq('isFinished', false);
   final _finishedBooks =
-      Supabase.instance.client.from('books').select().neq('isFinished', false);
+      Supabase.instance.client.from('books').select().eq('isFinished', true);
+
+  final userAuth = Supabase.instance.client.auth.getUser();
 
   @override
   Widget build(BuildContext context) {
@@ -16,63 +19,87 @@ class SliverFillRemainingGue extends StatelessWidget {
         child: TabBarView(
       children: [
         FutureBuilder(
-            future: _allBooks,
+            future: userAuth,
             builder: ((context, snapshot) {
               if (!snapshot.hasData) {
                 return const Center(child: CircularProgressIndicator());
               }
-              final books = snapshot.data!;
-              return ListView.builder(
-                  itemCount: books.length,
-                  itemBuilder: ((context, index) {
-                    final book = books[index];
-                    return Book(
-                      title: book['title'],
-                      readedPages: book['readedPages'],
-                      totalPages: book['totalPages'],
-                      isFinished: book['isFinished'],
-                      createdAt: book['created_at'],
-                    );
+              final user = snapshot.data!.user?.id;
+              return FutureBuilder(
+                  future: _allBooks.eq('userId', user.toString()),
+                  builder: ((context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    final books = snapshot.data!;
+                    return ListView.builder(
+                        itemCount: books.length,
+                        itemBuilder: ((context, index) {
+                          final book = books[index];
+                          return Book(
+                            title: book['title'],
+                            readedPages: book['readedPages'],
+                            totalPages: book['totalPages'],
+                            isFinished: book['isFinished'],
+                            createdAt: book['created_at'],
+                          );
+                        }));
                   }));
             })),
         FutureBuilder(
-            future: _unfinishedBooks,
+            future: userAuth,
             builder: ((context, snapshot) {
               if (!snapshot.hasData) {
                 return const Center(child: CircularProgressIndicator());
               }
-              final books = snapshot.data!;
-              return ListView.builder(
-                  itemCount: books.length,
-                  itemBuilder: ((context, index) {
-                    final book = books[index];
-                    return Book(
-                      title: book['title'],
-                      readedPages: book['readedPages'],
-                      totalPages: book['totalPages'],
-                      isFinished: book['isFinished'],
-                      createdAt: book['created_at'],
-                    );
+              final user = snapshot.data!.user?.id;
+              return FutureBuilder(
+                  future: _unfinishedBooks.eq('userId', user.toString()),
+                  builder: ((context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    final books = snapshot.data!;
+                    return ListView.builder(
+                        itemCount: books.length,
+                        itemBuilder: ((context, index) {
+                          final book = books[index];
+                          return Book(
+                            title: book['title'],
+                            readedPages: book['readedPages'],
+                            totalPages: book['totalPages'],
+                            isFinished: book['isFinished'],
+                            createdAt: book['created_at'],
+                          );
+                        }));
                   }));
             })),
         FutureBuilder(
-            future: _finishedBooks,
+            future: userAuth,
             builder: ((context, snapshot) {
               if (!snapshot.hasData) {
                 return const Center(child: CircularProgressIndicator());
               }
-              final books = snapshot.data!;
-              return ListView.builder(
-                  itemCount: books.length,
-                  itemBuilder: ((context, index) {
-                    final book = books[index];
-                    return Book(
-                      title: book['title'],
-                      readedPages: book['readedPages'],
-                      totalPages: book['totalPages'],
-                      isFinished: book['isFinished'],
-                      createdAt: book['created_at'],
-                    );
+              final user = snapshot.data!.user?.id;
+              return FutureBuilder(
+                  future: _finishedBooks.eq('userId', user.toString()),
+                  builder: ((context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    final books = snapshot.data!;
+                    return ListView.builder(
+                        itemCount: books.length,
+                        itemBuilder: ((context, index) {
+                          final book = books[index];
+                          return Book(
+                            title: book['title'],
+                            readedPages: book['readedPages'],
+                            totalPages: book['totalPages'],
+                            isFinished: book['isFinished'],
+                            createdAt: book['created_at'],
+                          );
+                        }));
                   }));
             })),
       ],

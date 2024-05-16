@@ -8,8 +8,8 @@ class ModalBottom extends StatelessWidget {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _readedPageController = TextEditingController();
   final TextEditingController _totalPageController = TextEditingController();
-  final supabase = Supabase.instance.client;
 
+  final supabase = Supabase.instance.client;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -246,6 +246,13 @@ class ModalBottom extends StatelessWidget {
                                                                   Colors.black),
                                                         ),
                                                         onPressed: () async {
+                                                          final auth =
+                                                              supabase.auth;
+                                                          final user =
+                                                              await auth
+                                                                  .getUser();
+                                                          final userId =
+                                                              user.user?.id;
                                                           await supabase
                                                               .from('books')
                                                               .insert({
@@ -265,6 +272,7 @@ class ModalBottom extends StatelessWidget {
                                                                 int.parse(
                                                                     _readedPageController
                                                                         .text),
+                                                            'userId': userId
                                                           });
                                                           showDialog(
                                                               context: context,

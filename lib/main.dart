@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:last_project/pages/HomePage.dart';
-import 'package:last_project/pages/LoginPage.dart';
+import 'package:last_project/pages/SignInPage.dart';
+import 'package:last_project/pages/SignUpPage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
@@ -24,7 +25,8 @@ class BookshelfApps extends StatelessWidget {
       theme: ThemeData(
           scaffoldBackgroundColor: const Color.fromARGB(255, 240, 240, 240)),
       routes: {
-        '/': (context) => const LoginPage(),
+        '/': (context) => SignInPage(),
+        '/signup': (context) => SignUpPage(),
         '/home': (context) => HomePage()
       },
     );
