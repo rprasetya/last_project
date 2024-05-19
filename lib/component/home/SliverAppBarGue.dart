@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:last_project/component/home/modalBottom.dart';
+import 'package:last_project/pages/SignInPage.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SliverAppBarGue extends StatelessWidget {
-  const SliverAppBarGue({super.key});
-
+  SliverAppBarGue({super.key});
+  final supabase = Supabase.instance.client;
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -30,19 +32,34 @@ class SliverAppBarGue extends StatelessWidget {
           fontFamily: 'Benzin-Medium',
         ),
       ),
-      actions: const [
-        Padding(
-          padding: EdgeInsets.only(right: 17),
-          child: CircleAvatar(
-            radius: 13,
-            foregroundColor: Colors.white,
-            backgroundColor: Color.fromARGB(255, 140, 140, 140),
-            child: Icon(
-              Icons.person,
-              size: 20,
+      actions: [
+        PopupMenuButton(
+            child: const Padding(
+              padding: EdgeInsets.only(right: 17),
+              child: CircleAvatar(
+                radius: 14,
+                foregroundColor: Colors.white,
+                backgroundColor: Color.fromARGB(255, 140, 140, 140),
+                child: Icon(
+                  Icons.person,
+                  size: 20,
+                ),
+              ),
             ),
-          ),
-        )
+            onSelected: (value) async {
+              if (value == 'signOut') {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Signing Out...')));
+                await supabase.auth.signOut();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignInPage()),
+                );
+              }
+            },
+            itemBuilder: (context) => [
+                  const PopupMenuItem(value: 'signOut', child: Text('Sign Out'))
+                ]),
       ],
       expandedHeight: 355,
       flexibleSpace: FlexibleSpaceBar(

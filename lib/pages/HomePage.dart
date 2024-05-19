@@ -14,9 +14,10 @@ class HomePage extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         drawer: const SafeArea(child: DrawerGua()),
         body: CustomScrollView(
-            slivers: [const SliverAppBarGue(), SliverFillRemainingGue()]),
+            slivers: [SliverAppBarGue(), SliverFillRemainingGue()]),
       ),
     );
   }
