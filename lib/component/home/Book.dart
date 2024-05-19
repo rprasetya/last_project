@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, file_names
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -9,6 +11,7 @@ class Book extends StatelessWidget {
   String createdAt;
 
   Book({
+    super.key,
     required this.title,
     required this.readedPages,
     required this.totalPages,

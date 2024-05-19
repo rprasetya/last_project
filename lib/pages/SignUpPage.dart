@@ -1,5 +1,4 @@
-// ignore_for_file: deprecated_member_use, use_build_context_synchronously
-import 'package:path/path.dart';
+// ignore_for_file: deprecated_member_use, use_build_context_synchronously, file_names
 import 'package:flutter/material.dart';
 import 'package:last_project/pages/HomePage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

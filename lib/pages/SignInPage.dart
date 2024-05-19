@@ -1,6 +1,5 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, file_names, use_build_context_synchronously
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:last_project/pages/HomePage.dart';
 import 'package:last_project/pages/SignUpPage.dart';
@@ -184,7 +183,7 @@ class _SignInPageState extends State<SignInPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SignUpPage()),
+                          MaterialPageRoute(builder: (context) => const SignUpPage()),
                         );
                       },
                       style: const ButtonStyle(),

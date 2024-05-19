@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: file_names, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:last_project/component/home/modalBottom.dart';
 import 'package:last_project/pages/SignInPage.dart';
@@ -53,7 +54,7 @@ class SliverAppBarGue extends StatelessWidget {
                 await supabase.auth.signOut();
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => SignInPage()),
+                  MaterialPageRoute(builder: (context) => const SignInPage()),
                 );
               }
             },

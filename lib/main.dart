@@ -25,8 +25,8 @@ class BookshelfApps extends StatelessWidget {
       theme: ThemeData(
           scaffoldBackgroundColor: const Color.fromARGB(255, 240, 240, 240)),
       routes: {
-        '/': (context) => SignInPage(),
-        '/signup': (context) => SignUpPage(),
+        '/': (context) => const SignInPage(),
+        '/signup': (context) => const SignUpPage(),
         '/home': (context) => HomePage()
       },
     );

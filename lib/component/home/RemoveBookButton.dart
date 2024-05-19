@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -11,16 +12,16 @@ class RemoveBookButton extends StatelessWidget {
     return Expanded(
       child: ElevatedButton(
           style: ButtonStyle(
-            shadowColor: MaterialStateProperty.all<Color>(
+            shadowColor: WidgetStateProperty.all<Color>(
                 const Color.fromARGB(0, 255, 255, 255)),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18),
             )),
-            minimumSize: const MaterialStatePropertyAll(Size.fromHeight(170)),
-            backgroundColor: MaterialStateProperty.all<Color>(
+            minimumSize: const WidgetStatePropertyAll(Size.fromHeight(170)),
+            backgroundColor: WidgetStateProperty.all<Color>(
                 const Color.fromARGB(255, 230, 230, 230)),
-            foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+            foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
           ),
           onPressed: () => showDialog(
               context: context,
@@ -46,7 +47,7 @@ class RemoveBookButton extends StatelessWidget {
                                     child: CircularProgressIndicator());
                               }
                               final books = snapshot.data!;
-                              return Container(
+                              return SizedBox(
                                 height: 150,
                                 width: double.maxFinite,
                                 child: ListView.builder(
