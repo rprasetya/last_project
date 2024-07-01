@@ -7,6 +7,7 @@ Key Features:
 2. Real-Time Synchronization: With Supabase, every change is instantly synchronized, ensuring your data is always up-to-date.
 3. Responsive User Interface: Thanks to Flutter, enjoy a smooth and interactive interface across various platforms.
 
+
 Click link below to see project showcases
 
 https://www.instagram.com/p/C7zcIWeyh16/?img_index=1
