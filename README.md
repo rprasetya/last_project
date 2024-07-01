@@ -1,16 +1,10 @@
-# last_project
+# Bookshelf Apps
 
-A new Flutter project.
+We present our latest solution in personal literature management, "Bookshelf Apps". Developed using Flutter, this app offers high performance and an intuitive user experience. For the backend, we rely on the robust Supabase, ensuring your data is secure and easily accessible.
 
-## Getting Started
+Key Features:
+1. Book Tracking: Easily manage your book collection, save book details, reading status, and important annotations.
+2. Real-Time Synchronization: With Supabase, every change is instantly synchronized, ensuring your data is always up-to-date.
+3. Responsive User Interface: Thanks to Flutter, enjoy a smooth and interactive interface across various platforms.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://github.com/rprasetya/last_project/assets/102443842/e99bf9ed-5f3c-44fb-9ffe-d8cfd5655cc3
